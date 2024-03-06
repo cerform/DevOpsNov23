@@ -28,8 +28,15 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-    return None
-
+     if len(word) < 3:   #function that calculates leng of the variable word and checking condition  whether the length of word is less than 3
+        return word     #If the condition is true , the function immediately returns the original word unchanged. This ensures that short words remain unmodified.
+    elif word.endswith("ing"): # This line checks whether the input word already ends with the suffix “ing.”
+        return word + "ly" #if the word ends with “ing,” we concatenate “ly” to the end of the word and return the modified string
+    else: #If the word does not end with “ing,” we execute the code block following this keyword.
+        return word + "ing" #we concatenate “ing” to the end of the word and return the modified string
+input_word = input("Please Enter a Word : ") #promt the user to input the word
+result = verbing(input_word)#function that used stored variable of input_word as argument
+print(f"The modified word is : {result}") #prints the modified word using the formatted string , final word is stored in variable result
 
 def words_concatenation(words):
     """
@@ -43,7 +50,16 @@ def words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
+    def words_concatenation(words):
+    return " ".join(words)
+word_list = [] #define var word_list as empty list
+while True:
+    user_input = input("Enter a word (or 'done' to finish): ") #Prompt the user to enter words until they type 'done'
+    if user_input.lower() == 'done':
+        break
+    word_list.append(user_input)
+result = words_concatenation(word_list)
+print(f"The concatenated string is: {result}")
 
 
 def reverse_words_concatenation(words):
@@ -58,8 +74,10 @@ def reverse_words_concatenation(words):
     :param words: list of str
     :return: Return the resulting string.
     """
-    return None
-
+   return " ".join(reversed(words))
+word_list = []
+result = reverse_words_concatenation(word_list)
+print(f"The concatenated string in reverse order is: {result}")
 
 def is_unique_string(some_str):
     """
