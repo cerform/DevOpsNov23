@@ -28,15 +28,15 @@ def verbing(word):
     :param word: str
     :return: Return the resulting string.
     """
-     if len(word) < 3:   #function that calculates leng of the variable word and checking condition  whether the length of word is less than 3
-        return word     #If the condition is true , the function immediately returns the original word unchanged. This ensures that short words remain unmodified.
-    elif word.endswith("ing"): # This line checks whether the input word already ends with the suffix “ing.”
-        return word + "ly" #if the word ends with “ing,” we concatenate “ly” to the end of the word and return the modified string
-    else: #If the word does not end with “ing,” we execute the code block following this keyword.
-        return word + "ing" #we concatenate “ing” to the end of the word and return the modified string
-input_word = input("Please Enter a Word : ") #promt the user to input the word
-result = verbing(input_word)#function that used stored variable of input_word as argument
-print(f"The modified word is : {result}") #prints the modified word using the formatted string , final word is stored in variable result
+    if len(word) < 3:
+        return word
+    elif word.endswith('ing'):
+        return word + 'ly'
+    else:
+        return word + 'ing'
+print(verbing('teach'))      # Output: 'teaching'
+print(verbing('do'))         # Output: 'do'
+print(verbing('swimming'))   # Output: 'swimmingly'
 
 def words_concatenation(words):
     """
@@ -93,7 +93,11 @@ def is_unique_string(some_str):
     :param some_str:
     :return: bool
     """
-    return None
+    
+    return len(set(some_str)) == len(some_str)
+print(is_unique_string("abcd"))   # Output: True
+print(is_unique_string("aaabcd")) # Output: False
+print(is_unique_string(""))       # Output: True (empty string)
 
 
 def list_diff(elements):
