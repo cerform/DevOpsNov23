@@ -1,18 +1,27 @@
-tar -xvf secretGenerator.tar.gz
-#extract secretGGenerator archive
-/bin/bash generateSecret.sh
-#run script generateSecret.sh with bash tool
-mkdir secretDir
-#create new dir naming secretDir
-rm -rf maliciousFiles/
-#remove folder named maliciousFiles
-touch secretDir/.secret
-#create new hiden file named secret inside secretDirectory
-chmod 600 secretDir/.secret
-#set read/write permissions for secret file that was create in previous step
-rm -rf important.link
-#remove important.link
-/bin/bash generateSecret.sh
-#run script generateSecret.sh with bash tool
-nano secretDir/.secret
-#open .secret with nano text editor
+#!/bin/bash
+#Setting Variables for folders and files
+GREEN='\033[0;32m' #seting variable for color
+arch=secretGenerator.tar.gz
+source=./src
+secretgen=generateSecret.sh
+files=maliciousFiles
+links=important.link
+dir=secretDir
+# Download secretGenerator archive if it doesn't exist(NOT WORKED LAST TIME )
+#wget -N https://github.com/ronhadad22/DevOpsNov23/blob/main/02_linux_ex1/secre
+# Extract the archive and aplly permissions on file generateSecret.sh inside folder src
+tar -xvf $arch && cd $source && sudo chmod u+x $secretgen
+#remove malisious Files and important links
+rm -rf $files && rm -rf $links
+#need to unlink the file -5
+#create new dir named secretDir with the new hidden file secret that have only
+#read and write permissions
+
+mkdir $dir && touch $dir/.secret && chmod 600 $dir/.secret
+#Run script called generateSecret
+./$secretgen
+#clear output
+clear
+#Show as output file secret that was created on previous steps
+echo -e "${GREEN}your secret is : " && cat $dir/.secret
+#+5 on good doc and generic script
