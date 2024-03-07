@@ -102,20 +102,28 @@ print(is_unique_string(""))       # Output: True (empty string)
 
 def list_diff(elements):
     """
-    1 Kata
+    Given a list of integers, return the "diff" list where each element is reduced by its previous one.
+    The first element in the resulting list should be None.
 
-    Given a list of integers as an input, return the "diff" list - each element is
-    reduces by its previous one. The first element should be None
+    Args:
+        elements (list of int): List of integers.
 
-    e.g.
-    [1, 2, 3, 4, 7, 11] -> [None, 1, 1, 1, 3, 4]
-    [] -> []
-    [1, 5, 0, 4, 1, 1, 1] -> [None, 4, -5, 4, -3, 0, 0]
-
-    :param elements: list of integers
-    :return: the diff list
+    Returns:
+        list of int: The resulting diff list.
     """
-    return None
+    if not elements:
+        return []  # Empty list remains empty
+
+    diff_list = [None]  # Initialize with None as the first element
+    for i in range(1, len(elements)):
+        diff_list.append(elements[i] - elements[i - 1])
+
+    return diff_list
+
+# Example usage:
+print(list_diff([1, 2, 3, 4, 7, 11]))  # Output: [None, 1, 1, 1, 3, 4]
+print(list_diff([]))  # Output: []
+print(list_diff([1, 5, 0, 4, 1, 1, 1]))  # Output: [None, 4, -5, 4, -3, 0, 0]
 
 
 def prime_number(num):
@@ -128,7 +136,19 @@ def prime_number(num):
     :param num: the number to check
     :return: bool. True if prime, else False
     """
-    return None
+    if num <= 1:
+        # Numbers less than or equal to 1 are not prime
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        # Check for factors up to the square root of num
+        if num % i == 0:
+            return False  # Not prime
+    return True  # Prime
+
+# Example usage:
+print(prime_number(29))  # Output: True
+print(prime_number(10))  # Output: False
+print(prime_number(1))   # Output: False
 
 
 def palindrome_num(num):
